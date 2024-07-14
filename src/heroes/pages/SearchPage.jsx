@@ -1,11 +1,11 @@
 import { HeroCard } from "../components";
 import { useForm } from "../../hooks/useForm";
 import { useLocation, useNavigate } from "react-router-dom";
-import queryString from "query-string";
 import { getHeroesByName } from "../helpers";
 
 export const SearchPage = () => {
-
+  const queryString = require('query-string'); // con el import los test dan error
+  
   const navigate = useNavigate()
   const location = useLocation()
   
@@ -33,7 +33,7 @@ export const SearchPage = () => {
           <div className="col-5">
             <h4>Searching</h4>
             <hr />
-            <form onSubmit={onSearchSubmit}>
+            <form onSubmit={onSearchSubmit} aria-label="form">
               <input
                 type="text"
                 placeholder="Search a Hero"
@@ -59,6 +59,7 @@ export const SearchPage = () => {
             }*/}
 
             <div
+              aria-label="showSearch"
               className="alert alert-primary animate__animated animate__fadeIn"
               style={{ display: showSearch ? '' : 'none' }}
             >
@@ -66,6 +67,7 @@ export const SearchPage = () => {
             </div>
 
             <div
+              aria-label="showError"
               className="alert alert-danger  animate__animated animate__fadeIn"
               style={{ display: showError ? '' : 'none' }}
             >
